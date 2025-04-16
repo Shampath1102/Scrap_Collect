@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Scrap Collection App{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: url('../static/images/recycle-bg.jpg') no-repeat center center/cover;
+    color: white;
+  }
+  .hero-text {
+    margin-top: 20vh;
+    text-shadow: 2px 2px 4px #000;
+  }
+</style>
+
+<div class="text-center hero-text">
+  <h1 class="display-3 fw-bold">ScrapSmart</h1>
+  <p class="lead">Connecting Households with Eco-Friendly Scrap Collectors</p>
+  <a href="{{ url_for('auth.login') }}" class="btn btn-success btn-lg m-2">Login</a>
+  <a href="{{ url_for('auth.signup') }}" class="btn btn-outline-light btn-lg m-2">Sign Up</a>
+</div>
+{% endblock %}

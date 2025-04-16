@@ -1,0 +1,78 @@
+# Retry PDF generation using ASCII-safe characters (replacing bullet • with dash -)
+from fpdf import FPDF
+
+
+class PDFSafe(FPDF):
+    def header(self):
+        self.set_font("Arial", "B", 16)
+        self.cell(0, 10, "Shampath Kumar K S", ln=True, align="C")
+        self.set_font("Arial", "", 12)
+        self.cell(0, 10, "Email: shampath110202@gmail.com | Phone: 8695061663", ln=True, align="C")
+        self.cell(0, 10, "LinkedIn: linkedin.com/in/shampathkumar", ln=True, align="C")
+        self.ln(5)
+
+    def section_title(self, title):
+        self.set_font("Arial", "B", 14)
+        self.cell(0, 10, title, ln=True)
+        self.set_font("Arial", "", 12)
+
+    def add_ascii_bullets(self, points):
+        for point in points:
+            self.multi_cell(0, 10, f"- {point}")
+        self.ln(2)
+
+
+pdf = PDFSafe()
+pdf.add_page()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.set_font("Arial", size=12)
+
+# Education Section
+pdf.section_title("Education")
+pdf.multi_cell(0, 10, "M.Tech in Software Engineering (Integrated)\nVellore Institute of Technology, Vellore\n2022 - Present")
+pdf.ln(1)
+pdf.multi_cell(0, 10, "The Complete 2024 Web Development Bootcamp\nUdemy\nMar 2024 - Present")
+pdf.ln(5)
+
+# Projects Section
+pdf.section_title("Projects")
+
+projects = [
+    ("Simon Website Game", "https://shampath1102.github.io/Simon-game-project/",
+     ["Developed an interactive Simon game using JavaScript and jQuery.",
+      "Transformed static HTML and CSS into a playable browser game."]),
+    ("TinDog Website", "https://shampath1102.github.io/TinDog/",
+     ["Focused on front-end design using Flexbox, CSS Grid, and Bootstrap.",
+      "Developed a responsive website layout with clean styling."]),
+    ("Utilization of JUnit", "https://drive.google.com/file/d/1s7Xme-gjzDPN0HR3VBtqkUvEXAr5aAjH/view?usp=drivelink",
+     ["Documented the installation, usage, and types of testing using JUnit.",
+      "Explained testing operations and structure for Java applications."]),
+    ("Fitness Management System", "https://drive.google.com/file/d/1neg0PPcFAtyYcW3Euy5s3zBeKjCluJm/view?usp=drivelink",
+     ["Designed Jackson Structured Programming (JSP) and Data Flow Diagrams (DFDs).",
+      "Contributed to architectural planning for a fitness tracking system."]),
+    ("Software Security Flaws in OLA's Mobile Application", "https://drive.google.com/file/d/1qfPKr41LjTzEktdzz1wp-RR16Zyn42q/view?usp=drivelink",
+     ["Identified security flaws in OLA's app in a Requirement Engineering project.",
+      "Designed UML diagrams and developed a vision document to describe issues and solutions."])
+]
+
+for title, link, points in projects:
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(0, 10, title, ln=True)
+    pdf.set_font("Arial", "I", 11)
+    pdf.cell(0, 10, f"Link: {link}", ln=True)
+    pdf.set_font("Arial", "", 12)
+    pdf.add_ascii_bullets(points)
+
+# Skills Section
+pdf.section_title("Skills")
+pdf.add_ascii_bullets([
+    "Languages & Programming: C, C++, Java, Python, SQL, HTML, CSS, JavaScript, jQuery",
+    "Web & Tools: Eclipse, Git, JUnit, Cisco Packet Tracer, MATLAB, R",
+    "Concepts: Data Structures & Algorithms, Operating Systems (Linux), Software Testing, Web Development"
+])
+
+# Save PDF safely
+pdf_output_path = "C:/Users/rupa1/OneDrive/Desktop/Shampath_resume.pdf"
+pdf.output(pdf_output_path)
+
+pdf_output_path

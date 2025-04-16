@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Collector Dashboard{% endblock %}
+{% block content %}
+<h2>Welcome, {{ collector_name }}</h2>
+<a href="{{ url_for('auth.logout') }}" class="btn btn-secondary">Logout</a>
+<hr>
+<h4>Pickup Requests</h4>
+{% for pickup in pickups %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <p><strong>Scrap:</strong> {{ pickup.scrap_type }}</p>
+      <p><strong>Weight:</strong> {{ pickup.weight }} kg</p>
+      <p><strong>Address:</strong> {{ pickup.address }}</p>
+      <p><strong>Date & Time:</strong> {{ pickup.date }} {{ pickup.time }}</p>
+      <p><strong>Status:</strong> {{ pickup.status }}</p>
+      <p><strong>Estimated Price:</strong> ₹{{ pickup.estimated_price }}</p>
+      <form method="POST" action="{{ url_for('pickups.update_pickup', pickup_id=pickup.id) }}">
+        {% if pickup.status == 'Pending' %}
+          <button name="action" value="accept" class="btn btn-success">Accept</button>
+          <button name="action" value="decline" class="btn btn-danger">Decline</button>
+        {% elif pickup.status == 'Accepted' %}
+          <button name="action" value="complete" class="btn btn-primary">Mark as Completed</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
