@@ -1,0 +1,19 @@
+# Core Flask dependencies
+Flask==2.3.3
+Flask_SQLAlchemy==3.1.1
+Flask_Cors==4.0.0
+Flask_Login==0.6.3
+
+# Machine Learning & Image Processing
+tensorflow==2.15.0
+numpy==1.26.4
+Pillow==10.2.0
+
+# Utility
+gunicorn==21.2.0
+Werkzeug==3.0.1
+scikit-learn==1.4.1
+opencv-python==4.9.0.80
+
+# Optional (only if used)
+python-dotenv==1.0.1
