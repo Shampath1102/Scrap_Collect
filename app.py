@@ -42,8 +42,8 @@ app.register_blueprint(collector_bp)
 app.register_blueprint(pickups_bp)
 
 # Load models
-scrap_type_model = load_model("C:/Users/rupa1/OneDrive/Desktop/New LSM App/model_python/scrap_type_model.h5")
-condition_model = load_model("C:/Users/rupa1/OneDrive/Desktop/New LSM App/model_python/condition_model_binary.h5")
+scrap_type_model = load_model("scrap_type_model.h5")
+condition_model = load_model("condition_model_binary.h5")
 
 # Load scrap type class indices
 with open("C:/Users/rupa1/OneDrive/Desktop/New LSM App/model_python/class_indices.json", "r") as f:
