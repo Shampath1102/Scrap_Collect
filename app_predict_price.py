@@ -17,8 +17,8 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 
 # Load models
-scrap_type_model = load_model("scrap_type_model.h5")
-condition_model = load_model("condition_model_binary.h5")
+scrap_type_model = load_model("scrap_type_model.keras")
+condition_model = load_model("condition_model_binary.keras")
 
 # Load scrap type class indices
 with open("C:/Users/rupa1/OneDrive/Desktop/New LSM App/model_python/class_indices.json", "r") as f:
